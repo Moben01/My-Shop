@@ -11,7 +11,10 @@
 
         {% block content %}{% endblock %}
         {% include 'scripts.html' %}
+           {% block footer %}
         {% include 'footer.html' %}
+        {% endblock %}
+        
         {% block extra_scripts %}{% endblock %}
 
     </body>
