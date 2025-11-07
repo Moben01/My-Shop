@@ -273,7 +273,7 @@ def category_products(request, slug):
         variants = product.variants.all()
         if not variants.exists():
             continue
-        first_variant = variants.filter(show_in_main_page=True).first() or variants.first()
+        first_variant = variants.all().first() or variants.first()
 
         colors = [{
             'color_name': v.color.name,

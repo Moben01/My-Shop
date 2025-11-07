@@ -65,10 +65,12 @@
                                             <div class="mn-img">
                                             <a href="{% url 'products:product_details' i.product.id %}" class="image">
                                                 <img class="main-img"
-                                                    src="{{ i.first_variant.image.url }}"
+                                                    src="{{ i.first_variant.image.url }}"  style="  width: 100%;
+  height: 350px;"
                                                     alt="{{ i.product.name }}">
                                                 <img class="hover-img"
-                                                    src="{{ i.first_variant.image_hover.url }}"
+                                                    src="{{ i.first_variant.image_hover.url }}"  style="  width: 100%;
+  height: 350px;"
                                                     alt="{{ i.product.name }}">
                                             </a>
                                             </div>

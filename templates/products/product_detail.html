@@ -37,7 +37,7 @@
                                                 <div class="single-product-cover">
                                                     {% for img in variant_images %}
                                                         <div class="single-slide zoom-image-hover">
-                                                            <img class="img-responsive" src="{{ img.url }}" alt="{{ img.alt_text|default:product.name }}">
+                                                            <img class="img-responsive" src="{{ img.url }}" alt="{{ img.alt_text|default:product.name }}" style="width: 100%; height: 450px;">
                                                         </div>
                                                     {% empty %}
                                                         <div class="single-slide">
@@ -46,17 +46,24 @@
                                                     {% endfor %}
                                                 </div>
 
-                                                <div class="single-nav-thumb">
-                                                    {% for img in variant_images %}
-                                                        <div class="single-slide">
-                                                            <img class="img-responsive" src="{{ img.url }}" alt="{{ img.alt_text|default:product.name }}">
-                                                        </div>
-                                                    {% empty %}
-                                                        <div class="single-slide">
-                                                            <img class="img-responsive" src="{% static 'assets/img/no-image.png' %}" alt="No image available">
-                                                        </div>
-                                                    {% endfor %}
-                                                </div>
+                                             <div class="single-nav-thumb">
+												{% for img in variant_images %}
+													<div class="single-slide" style="width: 100px; height: 100px; overflow: hidden; border-radius: 8px; margin: 5px;">
+														<img class="img-responsive" 
+															src="{{ img.url }}" 
+															alt="{{ img.alt_text|default:product.name }}" 
+															style="width: 100%; height: 100%; object-fit: cover;">
+													</div>
+												{% empty %}
+													<div class="single-slide" style="width: 100px; height: 100px; overflow: hidden; border-radius: 8px; margin: 5px;">
+														<img class="img-responsive" 
+															src="{% static 'assets/img/no-image.png' %}" 
+															alt="No image available"
+															style="width: 100%; height: 100%; object-fit: cover;">
+													</div>
+												{% endfor %}
+											</div>
+
                                             </div>
                                         </div>
 
@@ -68,13 +75,13 @@
 														<div class="mn-single-price">
                                                             <div class="mn-price">
                                                                 {% if discount_percent > 0 %}
-                                                                    <div class="mn-price-old">${{ original_price|floatformat:2 }}</div>
+                                                                    <div class="mn-price-old">€{{ original_price|floatformat:2 }}</div>
                                                                     <div class="final-price">
-                                                                        ${{ final_price|floatformat:2 }}
+                                                                        €{{ final_price|floatformat:2 }}
                                                                         <span class="price-des">-{{ discount_percent|floatformat:0 }}%</span>
                                                                     </div>
                                                                 {% else %}
-                                                                    <div class="final-price">${{ original_price|floatformat:2 }}</div>
+                                                                    <div class="final-price">€{{ original_price|floatformat:2 }}</div>
                                                                 {% endif %}
                                                             </div>
 															<!-- <div class="mrp">M.R.P. : <span>$2,999.00</span></div> -->
@@ -381,11 +388,9 @@
 												<div class="mn-img">
 													<a href="product-detail.html" class="image">
 														<img class="main-img" src="{{ i.first_variant.image.url }}"
-															alt="product" style="  width: 100%;
-  height: 240px;">
+															alt="product" style="  width: 100%; height: 240px;">
 														<img class="hover-img" src="{{ i.first_variant.image_hover.url }}"
-															alt="product" style="  width: 100%;
-  height: 240px;">
+															alt="product" style="  width: 100%; height: 240px;">
 													</a>
 													<div class="mn-pro-loader"></div>
 													<div class="mn-options">
