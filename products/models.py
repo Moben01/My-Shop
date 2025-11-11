@@ -67,10 +67,17 @@ class Size(models.Model):
         ('XL', 'Extra Large'),
         ('XXL', 'Double Extra Large'),
     ]
-    size = models.CharField(max_length=50, choices=SIZE_CHOICES)
+    select = models.CharField(max_length=10, choices=SIZE_CHOICES, blank=True)
+    size = models.CharField(max_length=200, blank=True, help_text="Automatically filled based on selection")
+
+    def save(self, *args, **kwargs):
+        if self.select:
+            # Automatically save the display text (e.g. "Medium") to size
+            self.size = dict(self.SIZE_CHOICES).get(self.select, '')
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f" - {self.get_size_display()}"
+        return f"Size: ({self.size} Select: {self.select})"
 
 
 class Color(models.Model):

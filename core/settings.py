@@ -100,15 +100,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ayan_shop',        # database name
-        'USER': 'postgres',         # your PostgreSQL username
-        'PASSWORD': 'your_password',# your PostgreSQL password
-        'HOST': 'localhost',        # or your database server IP
-        'PORT': '5432',             # default PostgreSQL port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',  # Path to the SQLite database file
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

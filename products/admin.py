@@ -42,7 +42,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
-    list_display = ['get_size_display']
+    list_display = ['get_select_display', 'size']
 
 
 @admin.register(Color)
